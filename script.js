@@ -1165,6 +1165,53 @@ function afficherFormulaireAdresse() {
   alert("Fonctionnalité d'ajout d'adresse à implémenter");
 }
 
+// --- Animations et Effets Visiuels ---
+function scrollRevealInit() {
+  function reveal() {
+    document.querySelectorAll('.reveal').forEach(e=>{
+      const rect = e.getBoundingClientRect();
+      if(rect.top < window.innerHeight-40) e.classList.add('reveal-visible');
+    });
+  }
+  window.addEventListener('scroll', reveal);
+  reveal();
+}
+
+function menuMobileInit() {
+  const nav = document.querySelector('nav');
+  const toggle = document.getElementById('menu-toggle');
+  if(toggle && nav){
+    toggle.addEventListener('click', ()=>{
+      nav.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a=>
+      a.addEventListener('click',()=>nav.classList.remove('open')));
+  }
+}
+
+function activerBanniereFestive() {
+  const now = new Date(); // Pour démo, toujours activer sinon customiser selon fêtes !
+  const banner = document.getElementById('festive-banner');
+  if(banner) banner.style.display = '';
+  lancerConfettis();
+}
+function lancerConfettis() {
+  const container = document.getElementById('confetti-container');
+  if(!container)return;
+  container.style.display = 'block';
+  for(let i=0;i<80;i++){
+    const c = document.createElement('div');
+    c.className='confetti';
+    c.style.left = (Math.random()*98)+'vw';
+    c.style.background = 'hsl('+Math.floor(Math.random()*360)+',70%,60%)';
+    c.style.animationDuration = (1+Math.random()*1.8)+'s';
+    c.style.opacity = 0.9;
+    c.style.top = '-5vh';
+    container.appendChild(c);
+    setTimeout(()=>c.remove(),2400);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Initialiser les bases de données
   initialiserProduits();
@@ -1236,4 +1283,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   afficherCompteurPanier();
+  scrollRevealInit();
+  menuMobileInit();
+  activerBanniereFestive(); // Peut être conditionné selon la saison !
 });
