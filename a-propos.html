@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À propos - Florianus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Florianus Boutique</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="panier.html">Panier <span id="compteur-panier" class="compteur-panier">0</span></a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Section Hero -->
+    <section class="hero-about">
+      <div class="hero-content">
+        <h2>Notre univers</h2>
+        <p class="hero-subtitle">Là où l'âme rencontre le style</p>
+      </div>
+    </section>
+
+    <!-- Section Histoire -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Notre histoire</h3>
+            <p>
+              Florianus Boutique est née d'un désir profond : celui de créer des objets qui élèvent l'âme autant que le style. Chaque création est pensée comme un hommage à la lumière intérieure, aux racines culturelles et à la beauté du geste.
+            </p>
+            <p>
+              Inspirée par l'Afro-futurisme, la spiritualité et l'élégance festive, notre marque célèbre l'identité, la noblesse et la connexion. Nos produits sont conçus avec soin, dans le respect des matières, des symboles et des émotions.
+            </p>
+          </div>
+          <div class="about-visual">
+            <div class="visual-element">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="sunGradient" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+                  </radialGradient>
+                </defs>
+                <circle cx="100" cy="100" r="80" fill="url(#sunGradient)" opacity="0.3"/>
+                <circle cx="100" cy="100" r="60" fill="none" stroke="#8e3b46" stroke-width="2"/>
+                <circle cx="100" cy="100" r="40" fill="none" stroke="#d4a373" stroke-width="2"/>
+                <circle cx="100" cy="100" r="20" fill="#8e3b46"/>
+                <path d="M100,20 L100,40 M100,160 L100,180 M20,100 L40,100 M160,100 L180,100" stroke="#d4a373" stroke-width="3"/>
+                <path d="M50,50 L65,65 M135,135 L150,150 M50,150 L65,135 M135,65 L150,50" stroke="#d4a373" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Valeurs -->
+    <section class="values-section">
+      <div class="container">
+        <h3>Nos valeurs</h3>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">✨</div>
+            <h4>Authenticité</h4>
+            <p>Chaque pièce raconte une histoire, porte une intention, célèbre une culture.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🌍</div>
+            <h4>Respect</h4>
+            <p>Des matières nobles, des techniques ancestrales, un savoir-faire préservé.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">💫</div>
+            <h4>Spiritualité</h4>
+            <p>L'élégance qui élève l'âme et connecte à l'essence de l'être.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🎨</div>
+            <h4>Créativité</h4>
+            <p>L'innovation au service de la tradition, l'art au service de l'âme.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Mission -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-content">
+          <div class="mission-visual">
+            <div class="visual-element">
+              <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="missionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#8e3b46;stop-opacity:0.1" />
+                    <stop offset="100%" style="stop-color:#d4a373;stop-opacity:0.1" />
+                  </linearGradient>
+                </defs>
+                <rect width="300" height="200" fill="url(#missionGradient)"/>
+                <path d="M50,100 Q150,50 250,100" stroke="#8e3b46" stroke-width="3" fill="none"/>
+                <circle cx="150" cy="100" r="8" fill="#8e3b46"/>
+                <path d="M100,80 L120,100 L100,120 M200,80 L180,100 L200,120" stroke="#d4a373" stroke-width="2" fill="none"/>
+                <text x="150" y="150" text-anchor="middle" font-family="Arial" font-size="14" fill="#8e3b46">Connexion</text>
+              </svg>
+            </div>
+          </div>
+          <div class="mission-text">
+            <h3>Notre mission</h3>
+            <p>
+              Nous croyons que la mode peut être un vecteur de transformation personnelle et collective. Chaque création Florianus est conçue pour réveiller la beauté intérieure, honorer les racines culturelles et créer des ponts entre les traditions et l'avenir.
+            </p>
+            <p>
+              Notre engagement va au-delà de l'esthétique : nous soutenons les artisans locaux, privilégions les matières durables et créons des pièces qui traversent le temps.
+            </p>
+            <div class="mission-stats">
+              <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Artisanat local</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Déchets plastiques</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Passion créative</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h3>Rejoignez notre univers</h3>
+        <p>Découvrez des créations qui élèvent l'âme et célèbrent votre identité unique.</p>
+        <div class="cta-buttons">
+          <a href="boutique.html" class="btn">Découvrir la boutique</a>
+          <a href="contact.html" class="btn btn-secondary">Nous contacter</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Florianus Boutique</p>
+  </footer>
+</body>
+</html>

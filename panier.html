@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panier - Florianus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Florianus Boutique</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="panier.html">Panier <span id="compteur-panier" class="compteur-panier">0</span></a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Votre panier</h2>
+    <section id="panier" class="panier-zone"></section>
+    <div style="text-align: center; margin-top: 1rem;">
+      <button onclick="viderPanier()" style="margin-right: 1rem;">Vider le panier</button>
+      <button onclick="debugPanier()" style="background-color: #d4a373; margin-right: 1rem;">Debug Panier</button>
+      <button onclick="localStorage.clear(); location.reload();" style="background-color: #e74c3c; color: white; border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Reset Complet</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Florianus Boutique</p>
+  </footer>
+</body>
+</html>
