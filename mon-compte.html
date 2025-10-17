@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Compte - Florianus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Florianus Boutique</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="panier.html">Panier <span id="compteur-panier" class="compteur-panier">0</span></a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+      <a href="#" onclick="deconnexion()" class="logout-link">Déconnexion</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="dashboard-container">
+      <div class="dashboard-sidebar">
+        <div class="user-profile">
+          <div class="user-avatar">
+            <span id="user-initials">U</span>
+          </div>
+          <div class="user-info">
+            <h3 id="user-name">Utilisateur</h3>
+            <p id="user-email">user@example.com</p>
+          </div>
+        </div>
+        
+        <nav class="dashboard-nav">
+          <a href="#overview" class="nav-item active" onclick="afficherSection('overview')">
+            <span class="nav-icon">📊</span>
+            Vue d'ensemble
+          </a>
+          <a href="#orders" class="nav-item" onclick="afficherSection('orders')">
+            <span class="nav-icon">📦</span>
+            Mes commandes
+          </a>
+          <a href="#wishlist" class="nav-item" onclick="afficherSection('wishlist')">
+            <span class="nav-icon">❤️</span>
+            Ma liste de souhaits
+          </a>
+          <a href="#profile" class="nav-item" onclick="afficherSection('profile')">
+            <span class="nav-icon">👤</span>
+            Mon profil
+          </a>
+          <a href="#addresses" class="nav-item" onclick="afficherSection('addresses')">
+            <span class="nav-icon">📍</span>
+            Mes adresses
+          </a>
+          <a href="#settings" class="nav-item" onclick="afficherSection('settings')">
+            <span class="nav-icon">⚙️</span>
+            Paramètres
+          </a>
+        </nav>
+      </div>
+
+      <div class="dashboard-content">
+        <!-- Vue d'ensemble -->
+        <section id="overview" class="dashboard-section active">
+          <h2>Vue d'ensemble</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">📦</div>
+              <div class="stat-info">
+                <h3 id="total-orders">0</h3>
+                <p>Commandes totales</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-info">
+                <h3 id="total-spent">0,00 €</h3>
+                <p>Total dépensé</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❤️</div>
+              <div class="stat-info">
+                <h3 id="wishlist-count">0</h3>
+                <p>Articles favoris</p>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⭐</div>
+              <div class="stat-info">
+                <h3 id="loyalty-points">0</h3>
+                <p>Points de fidélité</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="recent-orders">
+            <h3>Commandes récentes</h3>
+            <div id="recent-orders-list">
+              <p>Aucune commande récente</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mes commandes -->
+        <section id="orders" class="dashboard-section">
+          <h2>Mes commandes</h2>
+          <div id="orders-list">
+            <div class="empty-state">
+              <div class="empty-icon">📦</div>
+              <h3>Aucune commande</h3>
+              <p>Vous n'avez pas encore passé de commande.</p>
+              <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Liste de souhaits -->
+        <section id="wishlist" class="dashboard-section">
+          <h2>Ma liste de souhaits</h2>
+          <div id="wishlist-list">
+            <div class="empty-state">
+              <div class="empty-icon">❤️</div>
+              <h3>Liste de souhaits vide</h3>
+              <p>Ajoutez des articles à votre liste de souhaits.</p>
+              <a href="boutique.html" class="btn btn-primary">Découvrir la boutique</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Mon profil -->
+        <section id="profile" class="dashboard-section">
+          <h2>Mon profil</h2>
+          <form id="profile-form" class="profile-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profile-prenom">Prénom *</label>
+                <input type="text" id="profile-prenom" name="prenom" required>
+              </div>
+              <div class="form-group">
+                <label for="profile-nom">Nom *</label>
+                <input type="text" id="profile-nom" name="nom" required>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-email">Email *</label>
+              <input type="email" id="profile-email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-telephone">Téléphone</label>
+              <input type="tel" id="profile-telephone" name="telephone">
+            </div>
+            
+            <div class="form-group">
+              <label for="profile-date-naissance">Date de naissance</label>
+              <input type="date" id="profile-date-naissance" name="dateNaissance">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+          </form>
+        </section>
+
+        <!-- Mes adresses -->
+        <section id="addresses" class="dashboard-section">
+          <h2>Mes adresses</h2>
+          <div class="addresses-header">
+            <button onclick="afficherFormulaireAdresse()" class="btn btn-primary">
+              <span>+</span> Ajouter une adresse
+            </button>
+          </div>
+          <div id="addresses-list">
+            <div class="empty-state">
+              <div class="empty-icon">📍</div>
+              <h3>Aucune adresse</h3>
+              <p>Ajoutez une adresse pour faciliter vos commandes.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Paramètres -->
+        <section id="settings" class="dashboard-section">
+          <h2>Paramètres</h2>
+          <div class="settings-sections">
+            <div class="settings-section">
+              <h3>Notifications</h3>
+              <div class="setting-item">
+                <label class="switch">
+                  <input type="checkbox" id="email-notifications" checked>
+                  <span class="slider"></span>
+                </label>
+                <div class="setting-info">
+                  <h4>Notifications par email</h4>
+                  <p>Recevez des mises à jour sur vos commandes</p>
+                </div>
+              </div>
+              <div class="setting-item">
+                <label class="switch">
+                  <input type="checkbox" id="newsletter" checked>
+                  <span class="slider"></span>
+                </label>
+                <div class="setting-info">
+                  <h4>Newsletter</h4>
+                  <p>Recevez nos actualités et offres spéciales</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h3>Compte</h3>
+              <div class="setting-item">
+                <button onclick="changerMotDePasse()" class="btn btn-secondary">Changer le mot de passe</button>
+                <div class="setting-info">
+                  <h4>Mot de passe</h4>
+                  <p>Mettez à jour votre mot de passe</p>
+                </div>
+              </div>
+              <div class="setting-item">
+                <button onclick="supprimerCompte()" class="btn btn-danger">Supprimer le compte</button>
+                <div class="setting-info">
+                  <h4>Supprimer le compte</h4>
+                  <p>Cette action est irréversible</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Florianus Boutique</p>
+  </footer>
+</body>
+</html>

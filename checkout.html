@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Florianus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <header>
+    <h1>Florianus Boutique</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="panier.html">Panier <span id="compteur-panier" class="compteur-panier">0</span></a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="checkout-container">
+      <div class="checkout-header">
+        <h2>Finaliser votre commande</h2>
+        <div class="checkout-steps">
+          <div class="step active">1. Panier</div>
+          <div class="step active">2. Livraison</div>
+          <div class="step">3. Paiement</div>
+          <div class="step">4. Confirmation</div>
+        </div>
+      </div>
+
+      <div class="checkout-content">
+        <!-- Récapitulatif du panier -->
+        <div class="checkout-sidebar">
+          <h3>Votre commande</h3>
+          <div id="checkout-panier" class="checkout-panier"></div>
+          <div class="checkout-total">
+            <div class="total-line">
+              <span>Sous-total</span>
+              <span id="sous-total">0,00 €</span>
+            </div>
+            <div class="total-line">
+              <span>Livraison</span>
+              <span id="frais-livraison">Gratuite</span>
+            </div>
+            <div class="total-line total-final">
+              <span>Total</span>
+              <span id="total-final">0,00 €</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulaire de commande -->
+        <div class="checkout-form">
+          <form id="checkout-form">
+            <!-- Informations de livraison -->
+            <section class="form-section">
+              <h3>Informations de livraison</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="prenom">Prénom *</label>
+                  <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div class="form-group">
+                  <label for="nom">Nom *</label>
+                  <input type="text" id="nom" name="nom" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="telephone">Téléphone *</label>
+                <input type="tel" id="telephone" name="telephone" required>
+              </div>
+              <div class="form-group">
+                <label for="adresse">Adresse *</label>
+                <input type="text" id="adresse" name="adresse" required>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="ville">Ville *</label>
+                  <input type="text" id="ville" name="ville" required>
+                </div>
+                <div class="form-group">
+                  <label for="code-postal">Code postal *</label>
+                  <input type="text" id="code-postal" name="code-postal" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pays">Pays *</label>
+                <select id="pays" name="pays" required>
+                  <option value="BJ">Bénin</option>
+                  <option value="TG">Togo</option>
+                  <option value="SN">Sénégal</option>
+                  <option value="CI">Côte d'Ivoire</option>
+                  <option value="FR">France</option>
+                  <option value="CA">Canada</option>
+                </select>
+              </div>
+            </section>
+
+            <!-- Méthode de livraison -->
+            <section class="form-section">
+              <h3>Méthode de livraison</h3>
+              <div class="delivery-options">
+                <label class="delivery-option">
+                  <input type="radio" name="livraison" value="standard" checked>
+                  <div class="option-content">
+                    <span class="option-title">Livraison standard</span>
+                    <span class="option-desc">5-7 jours ouvrés</span>
+                    <span class="option-price">Gratuite</span>
+                  </div>
+                </label>
+                <label class="delivery-option">
+                  <input type="radio" name="livraison" value="express">
+                  <div class="option-content">
+                    <span class="option-title">Livraison express</span>
+                    <span class="option-desc">2-3 jours ouvrés</span>
+                    <span class="option-price">15,00 €</span>
+                  </div>
+                </label>
+              </div>
+            </section>
+
+            <!-- Méthode de paiement -->
+            <section class="form-section">
+              <h3>Méthode de paiement</h3>
+              <div class="payment-methods">
+                <div class="payment-method">
+                  <input type="radio" id="stripe" name="paiement" value="stripe" checked>
+                  <label for="stripe">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'><rect width='100' height='40' fill='%236366f1'/><text x='50' y='25' text-anchor='middle' fill='white' font-family='Arial' font-size='14' font-weight='bold'>Stripe</text></svg>" alt="Stripe">
+                    <span>Carte bancaire (sécurisé)</span>
+                  </label>
+                </div>
+                <div class="payment-method">
+                  <input type="radio" id="paypal" name="paiement" value="paypal">
+                  <label for="paypal">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'><rect width='100' height='40' fill='%23007bb5'/><text x='50' y='25' text-anchor='middle' fill='white' font-family='Arial' font-size='14' font-weight='bold'>PayPal</text></svg>" alt="PayPal">
+                    <span>PayPal</span>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- Bouton de commande -->
+            <div class="checkout-actions">
+              <button type="button" onclick="window.history.back()" class="btn btn-secondary">Retour au panier</button>
+              <button type="submit" class="btn btn-primary" id="btn-commander">
+                <span id="btn-text">Commander maintenant</span>
+                <span id="btn-loading" style="display: none;">Traitement...</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Florianus Boutique</p>
+  </footer>
+</body>
+</html>

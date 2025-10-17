@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration - Florianus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Florianus Boutique - Administration</h1>
+    <nav>
+      <a href="index.html">Site public</a>
+      <a href="admin.html" class="active">Administration</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="panier.html">Panier <span id="compteur-panier" class="compteur-panier">0</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="admin-container">
+      <div class="admin-header">
+        <h2>Gestion des produits</h2>
+        <button onclick="afficherFormulaireAjout()" class="btn btn-primary">
+          <span>+</span> Ajouter un produit
+        </button>
+      </div>
+
+      <!-- Formulaire d'ajout/modification de produit -->
+      <div id="formulaire-produit" class="formulaire-produit" style="display: none;">
+        <h3 id="titre-formulaire">Ajouter un produit</h3>
+        <form id="produit-form">
+          <input type="hidden" id="produit-id" name="id">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Nom du produit *</label>
+              <input type="text" id="nom" name="nom" required>
+            </div>
+            <div class="form-group">
+              <label for="prix">Prix (€) *</label>
+              <input type="number" id="prix" name="prix" step="0.01" min="0" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="categorie">Catégorie *</label>
+              <select id="categorie" name="categorie" required>
+                <option value="">Sélectionner une catégorie</option>
+                <option value="bijoux">Bijoux</option>
+                <option value="vetements">Vêtements</option>
+                <option value="accessoires">Accessoires</option>
+                <option value="decoration">Décoration</option>
+                <option value="spiritualite">Spiritualité</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="stock">Stock *</label>
+              <input type="number" id="stock" name="stock" min="0" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="description">Description *</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="couleur">Couleur principale</label>
+              <input type="text" id="couleur" name="couleur" placeholder="ex: Or, Noir, Blanc...">
+            </div>
+            <div class="form-group">
+              <label for="materiau">Matériau</label>
+              <input type="text" id="materiau" name="materiau" placeholder="ex: Coton bio, Or 18k...">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="tags">Tags (séparés par des virgules)</label>
+            <input type="text" id="tags" name="tags" placeholder="ex: spirituel, afro-futurisme, artisanal">
+          </div>
+          
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="btn-sauvegarder">
+              <span id="btn-text">Sauvegarder</span>
+              <span id="btn-loading" style="display: none;">Sauvegarde...</span>
+            </button>
+            <button type="button" onclick="masquerFormulaire()" class="btn btn-secondary">Annuler</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Filtres et recherche -->
+      <div class="filtres-section">
+        <div class="filtres-row">
+          <div class="search-box">
+            <input type="text" id="recherche" placeholder="Rechercher un produit..." onkeyup="filtrerProduits()">
+            <span class="search-icon">🔍</span>
+          </div>
+          <div class="filtres">
+            <select id="filtre-categorie" onchange="filtrerProduits()">
+              <option value="">Toutes les catégories</option>
+              <option value="bijoux">Bijoux</option>
+              <option value="vetements">Vêtements</option>
+              <option value="accessoires">Accessoires</option>
+              <option value="decoration">Décoration</option>
+              <option value="spiritualite">Spiritualité</option>
+            </select>
+            <select id="filtre-stock" onchange="filtrerProduits()">
+              <option value="">Tous les stocks</option>
+              <option value="en-stock">En stock</option>
+              <option value="rupture">Rupture de stock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liste des produits -->
+      <div class="produits-admin">
+        <div class="produits-header">
+          <h3>Produits (<span id="nombre-produits">0</span>)</h3>
+          <div class="actions-bulk">
+            <button onclick="selectionnerTous()" class="btn btn-small">Sélectionner tout</button>
+            <button onclick="supprimerSelectionnes()" class="btn btn-small btn-danger">Supprimer sélectionnés</button>
+          </div>
+        </div>
+        
+        <div id="liste-produits" class="liste-produits">
+          <!-- Les produits seront chargés dynamiquement -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Florianus Boutique - Administration</p>
+  </footer>
+</body>
+</html>

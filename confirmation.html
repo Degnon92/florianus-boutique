@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmation - Florianus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Florianus Boutique</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="boutique.html">Boutique</a>
+      <a href="panier.html">Panier <span id="compteur-panier" class="compteur-panier">0</span></a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="confirmation-container">
+      <div class="confirmation-success">
+        <div class="success-icon">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="#27ae60" opacity="0.1"/>
+            <circle cx="50" cy="50" r="35" fill="#27ae60"/>
+            <path d="M30,50 L45,65 L70,35" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        
+        <h2>Commande confirmée !</h2>
+        <p class="confirmation-message">
+          Merci pour votre commande ! Nous avons reçu votre paiement et nous préparons votre colis avec soin.
+        </p>
+        
+        <div class="order-details" id="order-details">
+          <!-- Les détails de la commande seront ajoutés par JavaScript -->
+        </div>
+        
+        <div class="confirmation-actions">
+          <a href="boutique.html" class="btn btn-primary">Continuer mes achats</a>
+          <a href="index.html" class="btn btn-secondary">Retour à l'accueil</a>
+        </div>
+        
+        <div class="next-steps">
+          <h3>Prochaines étapes</h3>
+          <div class="steps-timeline">
+            <div class="step-item completed">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Commande reçue</h4>
+                <p>Votre commande a été confirmée</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Préparation</h4>
+                <p>Nous préparons votre colis (1-2 jours)</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Expédition</h4>
+                <p>Votre colis est en route</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Livraison</h4>
+                <p>Livraison à votre adresse</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-info">
+          <h3>Besoin d'aide ?</h3>
+          <p>Notre équipe est là pour vous accompagner :</p>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <span class="contact-icon">📧</span>
+              <span>contact@florianus-boutique.com</span>
+            </div>
+            <div class="contact-method">
+              <span class="contact-icon">📱</span>
+              <span>+229 XX XX XX XX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Florianus Boutique</p>
+  </footer>
+</body>
+</html>
